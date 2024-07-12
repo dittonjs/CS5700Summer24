@@ -2,18 +2,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 
-class ViewHelper(startTime: Int) {
-    var timeRemaining by mutableStateOf(startTime)
-    private val timer = Timer(startTime)
+class ViewHelper() {
+    var timeRemaining by mutableStateOf(60)
+    var textFieldValue by mutableStateOf("60")
 
-    init {
+    suspend fun startTimer (startTime: Int) {
+        timeRemaining = startTime
+        val timer = Timer(startTime)
         timer.subscribe {
-            timeRemaining = timeRemaining
+            timeRemaining = it
         }
-    }
-
-    suspend fun startTimer () {
-        println("asdfasdf")
         timer.start()
     }
 }
