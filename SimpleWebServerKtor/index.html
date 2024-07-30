@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function sendData() {
+            fetch("/data", {
+                method: "post",
+                body: document.getElementById("input").value
+            })
+        }
+    </script>
+</head>
+<body>
+    <h1>My App</h1>
+    <div>
+        <input type="text" id="input">
+        <button onclick="sendData()">
+            Send Data
+        </button>
+    </div>
+</body>
+</html>
